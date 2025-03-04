@@ -1,0 +1,62 @@
+import Link from "next/link";
+
+import { api, HydrateClient } from "~/trpc/server";
+import realofake from "~/public/realofake.png";
+
+export default async function Home() {
+  const hello = await api.post.hello({ text: "Deepfake Ethics" });
+
+
+  return (
+      <HydrateClient>
+        <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-blue-900 to-gray-900 text-white">
+          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+            <h1 className="text-5xl font-extrabold tracking-tight sm:text-[4rem] text-white">
+              Deepfake <span className="text-blue-300">Ethics</span> Case Study
+            </h1>
+            <img
+                src="/realofake.png" // Change to actual image path
+                alt="Deepfake Ethics Case Study"
+                className="w-full max-w-3xl rounded-lg shadow-lg border border-gray-700"
+            />
+            <div className="max-w-2xl text-center text-lg text-gray-300">
+              <p>
+                The rise of deepfake technology has sparked significant ethical concerns, especially in
+                cases where AI-generated videos manipulate public perception. Celebrities and
+                public figures have frequently been the target of deepfake misinformation,
+                with fabricated endorsements leading to financial and reputational harm.
+              </p>
+              <p className="mt-4">
+                Recent cases highlight the misuse of deepfakes in fraudulent advertisements,
+                such as manipulated videos of Manny Pacquiao falsely endorsing online casinos.
+                These incidents demonstrate the urgent need for ethical discussions around AI,
+                digital identity, and misinformation.
+              </p>
+            </div>
+            <nav className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
+              <Link className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+                    href="/case-overview">
+                <h3 className="text-2xl font-bold">Case Overview →</h3>
+                <div className="text-lg">A real-world case study analyzing deepfake technology.</div>
+              </Link>
+              <Link className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+                    href="/ethical-issues">
+                <h3 className="text-2xl font-bold">Ethical Issues →</h3>
+                <div className="text-lg">Privacy, misinformation, and the ethical implications of deepfakes.</div>
+              </Link>
+              <Link className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+                    href="/legal-professional">
+                <h3 className="text-2xl font-bold">Legal & Professional →</h3>
+                <div className="text-lg">How laws and IT experts address deepfake misuse.</div>
+              </Link>
+              <Link className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+                    href="/solutions">
+                <h3 className="text-2xl font-bold">Solutions & Recommendations →</h3>
+                <div className="text-lg">Regulations, policies, and strategies to counter deepfake threats.</div>
+              </Link>
+            </nav>
+          </div>
+        </main>
+      </HydrateClient>
+  );
+}

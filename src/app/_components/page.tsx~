@@ -1,0 +1,24 @@
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react"; // Install Lucide if not installed: npm install lucide-react
+
+export default function PageNameHere() {
+    return (
+        <main className="flex min-h-screen flex-col items-center justify-center text-white bg-gradient-to-b from-gray-900 to-black p-8">
+
+            {/* Back to Home Button */}
+            <div className="absolute top-6 left-6">
+                <Link href="/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition">
+                    <ArrowLeft className="w-5 h-5" />
+                    <span className="text-lg font-semibold">Back to Home</span>
+                </Link>
+            </div>
+
+            {/* Page Content Here */}
+            <h1 className="text-4xl font-bold">Page Title</h1>
+            <p className="mt-4 max-w-2xl text-center">
+                Page content goes here...
+            </p>
+
+        </main>
+    );
+}
